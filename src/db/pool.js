@@ -1,6 +1,8 @@
 /* eslint-disable indent */
-import { Pool } from "pg";
+import pg from "pg";
 import process from "process";
+
+const { Pool } = pg;
 
 export default new Pool(
     process.env.DB_CONNECTION_STRING === ""
