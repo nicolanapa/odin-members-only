@@ -4,6 +4,7 @@ import url from "url";
 import path from "path";
 import session from "express-session";
 import passport from "passport";
+import { signUpRouter } from "./routes/signUpRouter.js";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,5 +24,7 @@ app.use(express.static(path.join(__dirname + "/scripts")));
 app.get("/", (req, res) => {
     res.send("<h1>Home</h1>");
 });
+
+app.use("/signUp", signUpRouter);
 
 app.listen(PORT);
