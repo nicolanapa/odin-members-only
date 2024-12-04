@@ -7,11 +7,11 @@ const insertUsername = async (firstName, lastName, email, password) => {
     await pool.query(
         `
         INSERT INTO username
-        (first_name, last_name, email, password, membership_status)
+        (first_name, last_name, email, password)
         VALUES
-        ($1, $2, $3, $4, $5);
+        ($1, $2, $3, $4);
         `,
-        [firstName, lastName, email, hashedPassword, "newUser"],
+        [firstName, lastName, email, hashedPassword],
     );
 };
 

@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS username (
     last_name TEXT,
     email TEXT,
     password TEXT,
-    membership_status TEXT
+    membership_status TEXT DEFAULT 'newUser'
 );
 
 CREATE TABLE IF NOT EXISTS message (
