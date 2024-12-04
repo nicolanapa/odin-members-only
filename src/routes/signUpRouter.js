@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { body, validationResult } from "express-validator";
+import { insertUsername } from "../db/insertUsername.js";
 
 const passwordChecker = (value, { req }) => {
     return value === req.body.password;
@@ -59,6 +60,10 @@ signUpRouter.post("/", [
 
             return;
         }
+
+        const { first_name, last_name, email, password } = req.body;
+
+        await insertUsername(first_name, last_name, email, password);
 
         res.status(200).redirect("/");
     },
