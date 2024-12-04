@@ -6,21 +6,43 @@
         <title>Sign-up Page</title>
     </head>
     <body>
+        <% if (locals.errors) { %>
+        <ul>
+            <% for (let i = 0; i < errors.length; i++) { %>
+            <li><%= errors[i].msg %></li>
+            <% } %>
+        </ul>
+        <% } %>
+
         <form action="/signUp" method="POST">
             <label for="first-name">First Name: </label>
-            <input type="text" name="first_name" id="first-name" />
+            <input type="text" name="first_name" id="first-name" required />
 
             <label for="last-name">Last Name: </label>
-            <input type="text" name="last_name" id="last-name" />
+            <input type="text" name="last_name" id="last-name" required />
 
             <label for="email">Email: </label>
-            <input type="email" name="email" id="email" />
+            <input type="email" name="email" id="email" required />
 
             <label for="password">Password: </label>
-            <input type="password" name="password" id="password" />
+            <input
+                type="password"
+                name="password"
+                id="password"
+                minlength="4"
+                maxlength="96"
+                required
+            />
 
             <label for="confirm-password">Confirm Password: </label>
-            <input type="password" name="confirmPassword" id="confirm-password" />
+            <input
+                type="password"
+                name="confirmPassword"
+                id="confirm-password"
+                minlength="4"
+                maxlength="96"
+                required
+            />
 
             <button type="submit">Submit</button>
         </form>

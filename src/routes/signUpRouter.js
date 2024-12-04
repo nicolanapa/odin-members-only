@@ -55,8 +55,12 @@ signUpRouter.post("/", [
         if (!errors.isEmpty()) {
             console.log(errors.array());
 
+            res.status(400).render("./signUp", { errors: errors.array() });
+
             return;
         }
+
+        res.status(200).redirect("/");
     },
 ]);
 
