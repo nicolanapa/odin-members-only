@@ -5,6 +5,7 @@ import path from "path";
 import session from "express-session";
 import passport from "passport";
 import { signUpRouter } from "./routes/signUpRouter.js";
+import { joinRouter } from "./routes/joinRouter.js";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,5 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/signUp", signUpRouter);
+
+app.use("/join", joinRouter);
 
 app.listen(PORT);
