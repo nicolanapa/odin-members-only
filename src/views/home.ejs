@@ -11,6 +11,8 @@
             Hi,
             <%= user.email %>
         </h1>
+        <% } else { %>
+        <h1>You should <a href="/login">Login!</a></h1>
         <% } %>
     </body>
 </html>
