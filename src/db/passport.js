@@ -1,20 +1,25 @@
 import passport from "passport";
 import LocalStrategy from "passport-local";
 import * as argon2 from "argon2";
-import pool from "./pool";
+import pool from "./pool.js";
+
+const customFields = {
+    usernameField: "email",
+    passwordField: "password",
+};
 
 passport.use(
-    new LocalStrategy(async (id, password, done) => {
-        const { rows } = await pool.query("SELECT * FROM username WHERE id = $1", [id]);
+    new LocalStrategy(customFields, async (email, password, done) => {
+        console.log(email, password);
+
+        const { rows } = await pool.query("SELECT * FROM username WHERE email = $1", [email]);
         const user = rows[0];
 
         if (!user) {
             return done(null, false);
         }
 
-        const hashedPassword = await argon2.hash(password);
-
-        if (hashedPassword !== user.password) {
+        if (!(await argon2.verify(user.password, password))) {
             return done(null, false);
         }
 
@@ -32,3 +37,5 @@ passport.deserializeUser(async (id, done) => {
 
     done(null, user);
 });
+
+export default passport;
