@@ -13,6 +13,8 @@ joinRouter.post("/", async (req, res) => {
         updateStatus("member", 0);
     } else {
         res.status(401).render("./join", { error: "Wrong passcode" });
+        
+        return;
     }
 
     res.status(200).redirect("/");
