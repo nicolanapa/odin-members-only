@@ -3,9 +3,10 @@ import process from "process";
 import url from "url";
 import path from "path";
 import session from "express-session";
-import passport from "passport";
+import passport from "./db/passport.js";
 import { signUpRouter } from "./routes/signUpRouter.js";
 import { joinRouter } from "./routes/joinRouter.js";
+import { loginRouter } from "./routes/loginRouter.js";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,6 +26,8 @@ app.use(express.static(path.join(__dirname + "/scripts")));
 app.get("/", (req, res) => {
     res.status(200).render("./home", { user: req.user });
 });
+
+app.use("/login", loginRouter);
 
 app.use("/signUp", signUpRouter);
 
