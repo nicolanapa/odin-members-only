@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Join</title>
+    </head>
+    <body>
+        <% if (locals.error) { %>
+        <p><%= error %></p>
+        <% } %>
+
+        <form action="/join" method="POST">
+            <label for="">Enter the secret passcode</label>
+            <input type="password" name="passcode" id="passcode" />
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
