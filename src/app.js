@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname + "/styles")));
 app.use(express.static(path.join(__dirname + "/scripts")));
 
 app.get("/", (req, res) => {
-    res.send("<h1>Home</h1>");
+    res.status(200).render("./home", { user: req.user });
 });
 
 app.use("/signUp", signUpRouter);
