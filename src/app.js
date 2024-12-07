@@ -7,6 +7,7 @@ import passport from "./db/passport.js";
 import { signUpRouter } from "./routes/signUpRouter.js";
 import { joinRouter } from "./routes/joinRouter.js";
 import { loginRouter } from "./routes/loginRouter.js";
+import { createMessageRouter } from "./routes/createMessageRouter.js";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,5 +33,7 @@ app.use("/login", loginRouter);
 app.use("/signUp", signUpRouter);
 
 app.use("/join", joinRouter);
+
+app.use("/createMessage", createMessageRouter);
 
 app.listen(PORT);
