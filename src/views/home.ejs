@@ -16,5 +16,7 @@
         <% } else { %>
         <h1>You should <a href="/login">Login!</a></h1>
         <% } %>
+
+        <%- include("./messages", { messages: locals.messages }) %>
     </body>
 </html>
