@@ -8,6 +8,7 @@ import { signUpRouter } from "./routes/signUpRouter.js";
 import { joinRouter } from "./routes/joinRouter.js";
 import { loginRouter } from "./routes/loginRouter.js";
 import { createMessageRouter } from "./routes/createMessageRouter.js";
+import { selectMessages } from "./db/selectMessages.js";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,8 +25,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname + "/styles")));
 app.use(express.static(path.join(__dirname + "/scripts")));
 
-app.get("/", (req, res) => {
-    res.status(200).render("./home", { user: req.user });
+app.get("/", async (req, res) => {
+    const { rows } = await selectMessages();
+
+    res.status(200).render("./home", { user: req.user, messages: rows });
 });
 
 app.use("/login", loginRouter);
