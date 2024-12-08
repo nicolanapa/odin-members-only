@@ -11,4 +11,15 @@ const updateStatus = async (status, id) => {
     );
 };
 
-export { updateStatus };
+const updateAdmin = async (status, id) => {
+    await pool.query(
+        ` 
+        UPDATE username
+        SET admin = $1
+        WHERE id = $2;
+        `,
+        [status, id],
+    );
+};
+
+export { updateStatus, updateAdmin };
