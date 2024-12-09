@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Create a new Message</title>
+        <%- include("./partials/head.ejs", { title: "Create a new Message" }) %>
     </head>
     <body>
         <form action="/createMessage" method="POST">
