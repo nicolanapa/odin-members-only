@@ -5,12 +5,40 @@
     <li class="message">
         <% if (locals.user) { %> <% if (locals.user.membership_status === "member" ||
         locals.user.admin === true) { %>
-        <p class="made-by-at-date">
-            By <%= messages[i].email %>, posted at <%= messages[i].posted_date %>
-        </p>
+        <div class="message-info">
+            <div>
+                <img src="../icons/usernameIcon.svg" alt="Username" />
+                <p><%= messages[i].email %></p>
+            </div>
+
+            <div>
+                <img src="../icons/calendarDateIcon.svg" alt="Day/Month/Year" />
+                <p><%= (messages[i].posted_date).substring(0, 10) %></p>
+            </div>
+
+            <div>
+                <img src="../icons/exactDateIcon.svg" alt="Hour:Minutes:Seconds and Time Zone" />
+                <p><%= (messages[i].posted_date).substring(11) %></p>
+            </div>
+        </div>
         <% } %>
         <% } else { %>
-        <p class="made-by-at-date">By anonymous at anonymous date</p>
+        <div class="message-info">
+            <div>
+                <img src="../icons/usernameIcon.svg" alt="Anonymous Username" />
+                <p>Anonymous</p>
+            </div>
+
+            <div>
+                <img src="../icons/calendarDateIcon.svg" alt="Anonymous Date" />
+                <p>**/**/****</p>
+            </div>
+
+            <div>
+                <img src="../icons/exactDateIcon.svg" alt="Anonymous Exact Date" />
+                <p>**:**:** ***</p>
+            </div>
+        </div>
         <% } %>
 
         <h3 class="message-title"><%= messages[i].title %></h3>
