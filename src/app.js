@@ -24,6 +24,7 @@ app.use(session({ secret: process.env.SECRET_SESSION, resave: false, saveUniniti
 app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname + "/styles")));
+app.use(express.static(path.join(__dirname + "/icons")));
 app.use(express.static(path.join(__dirname + "/scripts")));
 
 app.get("/", async (req, res) => {
@@ -43,6 +44,10 @@ app.use("/createMessage", createMessageRouter);
 app.use("/delete", deleteRouter);
 
 app.get("/styles/:file", (req, res) => {
+    res.sendFile(__dirname + req.path);
+});
+
+app.get("/icons/:file", (req, res) => {
     res.sendFile(__dirname + req.path);
 });
 
