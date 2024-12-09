@@ -1,6 +1,6 @@
 <% if (locals.messages) { %>
 
-<ul>
+<ul class="messages-container">
     <% for (let i = 0; i < messages.length; i++) { %>
     <li class="message">
         <% if (locals.user) { %> <% if (locals.user.membership_status === "member" ||
