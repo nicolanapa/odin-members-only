@@ -2,17 +2,22 @@
 <html lang="en">
     <%- include("./partials/head.ejs", { title: "Members Only" }) %>
     <body>
-        <% if (locals.user) { %>
-        <h1>
-            Hi,
-            <%= user.email %>
-        </h1>
+        <header class="welcome-user">
+            <% if (locals.user) { %>
+            <h1>
+                Hi,
+                <%= user.email %>
+            </h1>
 
-        <h2><a href="/createMessage">Create a new message</a></h2>
-        <% } else { %>
-        <h1>You should <a href="/login">Login!</a></h1>
-        <% } %>
+            <h2><a href="/createMessage">Create a new message</a></h2>
+            <% } else { %>
+            <h1>Hi, anonymous!</h1>
+            <h2>You should <a href="/login">Login!</a></h2>
+            <% } %>
+        </header>
 
-        <%- include("./messages", { messages: locals.messages }) %>
+        <main class="messages-container">
+            <%- include("./messages", { messages: locals.messages }) %>
+        </main>
     </body>
 </html>
