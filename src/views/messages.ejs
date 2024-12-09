@@ -2,22 +2,24 @@
 
 <ul>
     <% for (let i = 0; i < messages.length; i++) { %>
-    <li>
-        <% if (locals.user) { %>
-        <% if (locals.user.membership_status === "member" || locals.user.admin === true) { %>
-        <p>By <%= messages[i].email %>, posted at <%= messages[i].posted_date %></p>
+    <li class="message">
+        <% if (locals.user) { %> <% if (locals.user.membership_status === "member" ||
+        locals.user.admin === true) { %>
+        <p class="made-by-at-date">
+            By <%= messages[i].email %>, posted at <%= messages[i].posted_date %>
+        </p>
         <% } %>
         <% } else { %>
-        <p>By anonymous at anonymous date</p>
+        <p class="made-by-at-date">By anonymous at anonymous date</p>
         <% } %>
 
-        <h3><%= messages[i].title %></h3>
-        <p><%= messages[i].content %></p>
+        <h3 class="message-title"><%= messages[i].title %></h3>
+        <p class="message-content"><%= messages[i].content %></p>
 
         <% if (locals.user) { %>
         <% if (locals.user.admin === "true") { %>
-        <form action="/delete/<%= messages[i].id %>" method="post">
-            <button type="submit">Delete this Message</button>
+        <form action="/delete/<%= messages[i].id %>" method="post" class="delete-form">
+            <button type="submit" class="delete-button">Delete this Message</button>
         </form>
         <% } %>
         <% } %>
