@@ -5,14 +5,14 @@
     </head>
     <body>
         <% if (locals.errors) { %>
-        <ul>
+        <ul class="error-container">
             <% for (let i = 0; i < errors.length; i++) { %>
             <li><%= errors[i].msg %></li>
             <% } %>
         </ul>
         <% } %>
 
-        <form action="/signUp" method="POST">
+        <form action="/signUp" method="POST" class="signup-form">
             <label for="first-name">First Name: </label>
             <input type="text" name="first_name" id="first-name" required />
 

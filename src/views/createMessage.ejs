@@ -4,7 +4,7 @@
         <%- include("./partials/head.ejs", { title: "Create a new Message" }) %>
     </head>
     <body>
-        <form action="/createMessage" method="POST">
+        <form action="/createMessage" method="POST" class="create-message">
             <label for="title">Message Title: </label>
             <input type="text" name="title" id="title" />
 
