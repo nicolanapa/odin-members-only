@@ -42,4 +42,8 @@ app.use("/createMessage", createMessageRouter);
 
 app.use("/delete", deleteRouter);
 
+app.get("/styles/:file", (req, res) => {
+    res.sendFile(__dirname + req.path);
+});
+
 app.listen(PORT);
