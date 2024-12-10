@@ -51,7 +51,7 @@
 
 .message-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     grid-template-rows: 1.5fr;
     grid-auto-rows: 1fr;
 }
@@ -64,6 +64,14 @@
     align-self: center;
     margin-left: 5px;
     padding: 2.5px;
+}
+
+.message-date {
+    flex-direction: column;
+}
+
+.message-date > div {
+    display: flex;
 }
 
 .smaller {
@@ -85,4 +93,12 @@
 
 .message-content {
     padding: 5px 10px;
+}
+
+.delete-button {
+    background-color: #ffe0ff;
+    border: none;
+    border-radius: 20px;
+    margin: 25px 0 0 25px;
+    padding: 12.5px 17.5px;
 }
