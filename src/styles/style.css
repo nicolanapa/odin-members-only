@@ -121,7 +121,7 @@
 .form > input {
     border: 1px solid rgb(159, 159, 159);
     border-radius: 15px;
-    max-width: 50%;
+    max-width: 80%;
     margin: 2.5px 5px 25px 10px;
     padding: 6.5px 12.5px;
 }
