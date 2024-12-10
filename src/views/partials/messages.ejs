@@ -7,8 +7,19 @@
         locals.user.admin === true) { %>
         <div class="message-info">
             <div>
+                <% let shortenedEmail = (messages[i].email).substring(0, (messages[i].email).indexOf("@"));  %>
                 <img src="../icons/usernameIcon.svg" alt="Username" width="40px" height="auto" />
-                <p><%= messages[i].email %></p>
+                <p
+                    class="<% if (shortenedEmail.length >= 15 && shortenedEmail.length <= 20) { %>
+                    <%= "smaller" %>
+                    <% } else if (shortenedEmail.length > 20 && shortenedEmail.length <= 30) { %>
+                        <%= "much-smaller" %>
+                    <% } else if (shortenedEmail.length > 30) { %>
+                        <%= "much-more-smaller" %>
+                    <% } %>"
+                    >
+                    <%= shortenedEmail %>
+                </p>
             </div>
 
             <div>
