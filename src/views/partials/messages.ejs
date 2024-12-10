@@ -7,38 +7,36 @@
         locals.user.admin === true) { %>
         <div class="message-info">
             <div>
-                <img src="../icons/usernameIcon.svg" alt="Username" />
+                <img src="../icons/usernameIcon.svg" alt="Username" width="40px" height="auto" />
                 <p><%= messages[i].email %></p>
             </div>
 
             <div>
-                <img src="../icons/calendarDateIcon.svg" alt="Day/Month/Year" />
+                <img
+                    src="../icons/calendarDateIcon.svg"
+                    alt="Day/Month/Year"
+                    width="40px"
+                    height="auto"
+                />
                 <p><%= (messages[i].posted_date).substring(0, 10) %></p>
             </div>
 
             <div>
-                <img src="../icons/exactDateIcon.svg" alt="Hour:Minutes:Seconds and Time Zone" />
+                <img
+                    src="../icons/exactDateIcon.svg"
+                    alt="Hour:Minutes:Seconds and Time Zone"
+                    width="40px"
+                    height="auto"
+                />
                 <p><%= (messages[i].posted_date).substring(11) %></p>
             </div>
         </div>
-        <% } %>
         <% } else { %>
-        <div class="message-info">
-            <div>
-                <img src="../icons/usernameIcon.svg" alt="Anonymous Username" />
-                <p>Anonymous</p>
-            </div>
+        <%- include("./anonymousMessageInfo") %>
+        <% } %>
 
-            <div>
-                <img src="../icons/calendarDateIcon.svg" alt="Anonymous Date" />
-                <p>**/**/****</p>
-            </div>
-
-            <div>
-                <img src="../icons/exactDateIcon.svg" alt="Anonymous Exact Date" />
-                <p>**:**:** ***</p>
-            </div>
-        </div>
+        <% } else { %>
+        <%- include("./anonymousMessageInfo") %>
         <% } %>
 
         <h3 class="message-title"><%= messages[i].title %></h3>
