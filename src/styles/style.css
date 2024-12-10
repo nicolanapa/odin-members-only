@@ -98,6 +98,20 @@
     padding: 12.5px 17.5px;
 }
 
+.error-container,
+.single-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    color: white;
+    background-color: #600000;
+    border-radius: 4.5px;
+    row-gap: 7.5px;
+    margin: 25px 10%;
+    padding: 20px;
+}
+
 @media only screen and (max-width: 600px) {
     .welcome-user {
         flex-direction: column;
