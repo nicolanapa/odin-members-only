@@ -35,7 +35,7 @@
 
 .messages-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     column-gap: 5%;
     row-gap: 2.5%;
     margin: 10px;
@@ -46,5 +46,43 @@
 .message {
     background-color: #fff5ff;
     border-radius: 5px;
-    padding: 20px;
+    padding: 40px 20px;
+}
+
+.message-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    grid-template-rows: 1.5fr;
+    grid-auto-rows: 1fr;
+}
+
+.message-info > div {
+    display: flex;
+}
+
+.message-info > div p {
+    align-self: center;
+    margin-left: 5px;
+    padding: 2.5px;
+}
+
+.smaller {
+    font-size: smaller;
+}
+
+.much-smaller {
+    font-size: x-small;
+}
+
+.much-more-smaller {
+    font-size: xx-small;
+}
+
+.message-title {
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.message-content {
+    padding: 5px 10px;
 }
