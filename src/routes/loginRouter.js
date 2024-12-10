@@ -11,8 +11,14 @@ loginRouter.post(
     "/",
     passport.authenticate("local", {
         successRedirect: "/",
-        failureRedirect: "/",
+        failureRedirect: "/login/failure",
     }),
 );
+
+loginRouter.get("/failure", (req, res) => {
+    res.status(401).render("./login", {
+        errors: [{ msg: "Email or Password are incorrect" }],
+    });
+});
 
 export { loginRouter };
