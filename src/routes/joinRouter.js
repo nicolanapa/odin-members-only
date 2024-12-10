@@ -12,7 +12,7 @@ joinRouter.post("/", async (req, res) => {
     if (!req.user) {
         return res.status(401).render("./join", { error: "Not logged in" });
     }
-    
+
     if (req.body.passcode === process.env.SECRET_PASSWORD) {
         updateStatus("member", req.user.id);
     } else if (req.body.passcode === process.env.ADMIN_PASSWORD) {

@@ -12,7 +12,10 @@ passport.use(
     new LocalStrategy(customFields, async (email, password, done) => {
         console.log(email, password);
 
-        const { rows } = await pool.query("SELECT * FROM username WHERE email = $1", [email]);
+        const { rows } = await pool.query(
+            "SELECT * FROM username WHERE email = $1",
+            [email],
+        );
         const user = rows[0];
 
         if (!user) {
@@ -32,7 +35,9 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-    const { rows } = await pool.query("SELECT * FROM username WHERE id = $1", [id]);
+    const { rows } = await pool.query("SELECT * FROM username WHERE id = $1", [
+        id,
+    ]);
     const user = rows[0];
 
     done(null, user);

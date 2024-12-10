@@ -3,43 +3,44 @@
 <ul class="messages-container">
     <% for (let i = 0; i < messages.length; i++) { %>
     <li class="message">
-        <% if (locals.user) { %> <% if (locals.user.membership_status === "member" ||
-        locals.user.admin === true) { %>
+        <% if (locals.user) { %> <% if (locals.user.membership_status ===
+        "member" || locals.user.admin === true) { %>
         <div class="message-info">
             <div>
                 <% let shortenedEmail = (messages[i].email).substring(0, (messages[i].email).indexOf("@"));  %>
-                <img src="../icons/usernameIcon.svg" alt="Username" width="40px" height="auto" />
+                <img
+                    src="../icons/usernameIcon.svg"
+                    alt="Username"
+                    width="40px"
+                    height="auto"
+                />
                 <p
-                    class="<% if (shortenedEmail.length >= 15 && shortenedEmail.length <= 20) { %>
-                    <%= "smaller" %>
-                    <% } else if (shortenedEmail.length > 20 && shortenedEmail.length <= 30) { %>
-                        <%= "much-smaller" %>
-                    <% } else if (shortenedEmail.length > 30) { %>
-                        <%= "much-more-smaller" %>
-                    <% } %>"
-                    >
+                    class="<% if (shortenedEmail.length >= 15 && shortenedEmail.length <= 20) { %> <%= 'smaller' %> <% } else if (shortenedEmail.length > 20 && shortenedEmail.length <= 30) { %> <%= 'much-smaller' %> <% } else if (shortenedEmail.length > 30) { %> <%= 'much-more-smaller' %> <% } %>"
+                >
                     <%= shortenedEmail %>
                 </p>
             </div>
 
             <div>
-                <img
-                    src="../icons/calendarDateIcon.svg"
-                    alt="Day/Month/Year"
-                    width="40px"
-                    height="auto"
-                />
-                <p><%= (messages[i].posted_date).substring(0, 10) %></p>
-            </div>
+                <div>
+                    <img
+                        src="../icons/calendarDateIcon.svg"
+                        alt="Day/Month/Year"
+                        width="40px"
+                        height="auto"
+                    />
+                    <p><%= (messages[i].posted_date).substring(0, 10) %></p>
+                </div>
 
-            <div>
-                <img
-                    src="../icons/exactDateIcon.svg"
-                    alt="Hour:Minutes:Seconds and Time Zone"
-                    width="40px"
-                    height="auto"
-                />
-                <p><%= (messages[i].posted_date).substring(11) %></p>
+                <div>
+                    <img
+                        src="../icons/exactDateIcon.svg"
+                        alt="Hour:Minutes:Seconds and Time Zone"
+                        width="40px"
+                        height="auto"
+                    />
+                    <p><%= (messages[i].posted_date).substring(11) %></p>
+                </div>
             </div>
         </div>
         <% } else { %>
@@ -55,8 +56,14 @@
 
         <% if (locals.user) { %>
         <% if (locals.user.admin === "true") { %>
-        <form action="/delete/<%= messages[i].id %>" method="post" class="delete-form">
-            <button type="submit" class="delete-button">Delete this Message</button>
+        <form
+            action="/delete/<%= messages[i].id %>"
+            method="post"
+            class="delete-form"
+        >
+            <button type="submit" class="delete-button">
+                Delete this Message
+            </button>
         </form>
         <% } %>
         <% } %>

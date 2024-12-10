@@ -8,7 +8,11 @@ createMessageRouter.get("/", (req, res) => {
         res.status(200).render("./createMessage");
     } else {
         res.status(401).render("./login", {
-            errors: [{ msg: "401 Unauthorized: Log in first before creating a new message" }],
+            errors: [
+                {
+                    msg: "401 Unauthorized: Log in first before creating a new message",
+                },
+            ],
         });
     }
 });
