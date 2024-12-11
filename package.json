@@ -8,7 +8,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "git": "git subtree push --prefix dist origin gh-pages",
         "startWatch": "node --watch --env-file=.env ./src/app.js",
-        "startDb": "node --env-file=.env ./src/db/populateDb.js"
+        "startDb": "node --env-file=.env ./src/db/populateDb.js",
+        "dropDbTables": "node --env-file=.env ./src/db/dropTables.js"
     },
     "keywords": [],
     "author": "",
