@@ -12,6 +12,7 @@ import { loginRouter } from "./routes/loginRouter.js";
 import { createMessageRouter } from "./routes/createMessageRouter.js";
 import { selectMessages } from "./db/selectMessages.js";
 import { deleteRouter } from "./routes/deleteRouter.js";
+import { modifyMessageRouter } from "./routes/modifyMessageRouter.js";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -55,6 +56,8 @@ app.use("/signUp", signUpRouter);
 app.use("/join", joinRouter);
 
 app.use("/createMessage", createMessageRouter);
+
+app.use("/modifyMessage", modifyMessageRouter);
 
 app.use("/delete", deleteRouter);
 
