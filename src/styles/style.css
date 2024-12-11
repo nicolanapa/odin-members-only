@@ -32,6 +32,17 @@
     margin: 35px 2.5px;
 }
 
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+}
+
+nav > h2 a:link,
+nav > h2 a:visited {
+    color: #1c315d;
+}
+
 .messages-container {
     display: grid;
     column-gap: 5%;
@@ -141,7 +152,7 @@ form > input + button[type="submit"] {
     .welcome-user {
         flex-direction: column;
         align-items: center;
-        margin: 20px 10px 40px 10px;
+        margin: 20px 10px 7.5px 10px;
     }
 
     .messages-container {
@@ -167,7 +178,7 @@ form > input + button[type="submit"] {
 @media only screen and (min-width: 600px) {
     .welcome-user {
         flex-direction: row;
-        margin: 20px 7.5% 40px 7.5%;
+        margin: 20px 7.5% 7.5px 7.5%;
     }
 
     .messages-container {
