@@ -8,7 +8,6 @@ modifyMessageRouter.get("/:id", async (req, res) => {
     if (req.isAuthenticated()) {
         const { rows } = await selectMessage(req.params.id);
         const message = rows[0];
-        console.log(message);
 
         if (req.user.email == message.email || req.user.admin === "true") {
             res.status(200).render("./modifyMessage", {
