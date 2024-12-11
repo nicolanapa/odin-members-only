@@ -1,11 +1,15 @@
 import { Router } from "express";
 import { insertMessage } from "../db/insertMessage.js";
+import { returnPostedDateFormatted } from "../db/postedDate.js";
 
 const createMessageRouter = Router();
 
-createMessageRouter.get("/", (req, res) => {
+createMessageRouter.get("/", async (req, res) => {
     if (req.isAuthenticated()) {
-        res.status(200).render("./createMessage", { user: req.user });
+        res.status(200).render("./createMessage", {
+            user: req.user,
+            posted_date: await returnPostedDateFormatted(),
+        });
     } else {
         res.status(401).render("./login", {
             errors: [
