@@ -1,6 +1,4 @@
 import { Router } from "express";
-import { insertMessage } from "../db/insertMessage.js";
-import { returnPostedDateFormatted } from "../db/postedDate.js";
 import { selectMessage } from "../db/selectMessages.js";
 import pool from "../db/pool.js";
 
