@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <%- include("./partials/head.ejs", { title: "Modify a Message" }) %>
+    </head>
+    <body>
+        <form
+            action="/modifyMessage/<%= message.id %>"
+            method="POST"
+            class="form create-message"
+        >
+            <% if (locals.user) { %>
+            <div class="message-info">
+                <div>
+                    <% let shortenedEmail = (message.email).substring(0, (message.email).indexOf("@"));  %>
+                    <img
+                        src="../icons/usernameIcon.svg"
+                        alt="Username"
+                        width="40px"
+                        height="auto"
+                    />
+                    <p
+                        class="<% if (shortenedEmail.length >= 15 && shortenedEmail.length <= 20) { %> <%= 'smaller' %> <% } else if (shortenedEmail.length > 20 && shortenedEmail.length <= 30) { %> <%= 'much-smaller' %> <% } else if (shortenedEmail.length > 30) { %> <%= 'much-more-smaller' %> <% } %>"
+                    >
+                        <%= shortenedEmail %>
+                    </p>
+                </div>
+
+                <div class="message-date">
+                    <div>
+                        <img
+                            src="../icons/calendarDateIcon.svg"
+                            alt="Day/Month/Year"
+                            width="30px"
+                            height="auto"
+                        />
+                        <p><%= (message.posted_date).substring(0, 10) %></p>
+                    </div>
+
+                    <div>
+                        <img
+                            src="../icons/exactDateIcon.svg"
+                            alt="Hour:Minutes:Seconds and Time Zone"
+                            width="30px"
+                            height="auto"
+                        />
+                        <p><%= (message.posted_date).substring(11) %></p>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
+            <label for="title">Message Title: </label>
+            <input
+                type="text"
+                name="title"
+                id="title"
+                value="<%= message.title %>"
+            />
+
+            <label for="content">Message Content:</label>
+            <input
+                type="text"
+                name="content"
+                id="content"
+                value="<%= message.content %>"
+            />
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
