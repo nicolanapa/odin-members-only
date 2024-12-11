@@ -4,7 +4,48 @@
         <%- include("./partials/head.ejs", { title: "Create a new Message" }) %>
     </head>
     <body>
-        <form action="/createMessage" method="POST" class="create-message">
+        <form action="/createMessage" method="POST" class="form create-message">
+            <% if (locals.user) { %>
+            <div class="message-info">
+                <div>
+                    <% let shortenedEmail = (locals.user.email).substring(0, (locals.user.email).indexOf("@"));  %>
+                    <img
+                        src="../icons/usernameIcon.svg"
+                        alt="Username"
+                        width="40px"
+                        height="auto"
+                    />
+                    <p
+                        class="<% if (shortenedEmail.length >= 15 && shortenedEmail.length <= 20) { %> <%= 'smaller' %> <% } else if (shortenedEmail.length > 20 && shortenedEmail.length <= 30) { %> <%= 'much-smaller' %> <% } else if (shortenedEmail.length > 30) { %> <%= 'much-more-smaller' %> <% } %>"
+                    >
+                        <%= shortenedEmail %>
+                    </p>
+                </div>
+
+                <div class="message-date">
+                    <div>
+                        <img
+                            src="../icons/calendarDateIcon.svg"
+                            alt="Day/Month/Year"
+                            width="30px"
+                            height="auto"
+                        />
+                        <p>xx/yy/abcd</p>
+                    </div>
+
+                    <div>
+                        <img
+                            src="../icons/exactDateIcon.svg"
+                            alt="Hour:Minutes:Seconds and Time Zone"
+                            width="30px"
+                            height="auto"
+                        />
+                        <p>xx:yy:zz abc</p>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
             <label for="title">Message Title: </label>
             <input type="text" name="title" id="title" />
 
