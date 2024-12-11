@@ -55,6 +55,19 @@
         <p class="message-content"><%= messages[i].content %></p>
 
         <% if (locals.user) { %>
+        <% if (locals.user.email === messages[i].email || locals.user.admin === "true") { %>
+        <form
+            action="./modifyMessage/<%= messages[i].id %>"
+            class="delete-form"
+        >
+            <button type="submit" class="delete-button">
+                Modify this Message
+            </button>
+        </form>
+        <% } %>
+        <% } %>
+
+        <% if (locals.user) { %>
         <% if (locals.user.admin === "true") { %>
         <form
             action="/delete/<%= messages[i].id %>"
