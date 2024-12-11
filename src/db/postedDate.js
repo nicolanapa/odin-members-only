@@ -15,8 +15,6 @@ const returnPostedDateFormatted = async () => {
     );
     const postedDate = rows[0].to_char;
 
-    console.log(unformattedDate, postedDate);
-
     return postedDate;
 };
 
