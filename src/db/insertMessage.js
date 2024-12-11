@@ -1,8 +1,8 @@
 import pool from "./pool.js";
+import { returnPostedDate } from "./postedDate.js";
 
 const insertMessage = async (title, content, usernameId) => {
-    const { rows } = await pool.query("SELECT now();");
-    const postedDate = rows[0].now;
+    const postedDate = await returnPostedDate();
 
     await pool.query(
         `
