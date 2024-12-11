@@ -2,7 +2,9 @@ import express from "express";
 import process from "process";
 import url from "url";
 import path from "path";
+import pool from "./db/pool.js";
 import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
 import passport from "./db/passport.js";
 import { signUpRouter } from "./routes/signUpRouter.js";
 import { joinRouter } from "./routes/joinRouter.js";
@@ -14,6 +16,7 @@ import { deleteRouter } from "./routes/deleteRouter.js";
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 3000;
+const pgSession = connectPgSimple(session);
 
 const app = express();
 
@@ -22,9 +25,15 @@ app.set("view engine", "ejs");
 
 app.use(
     session({
+        store: new pgSession({
+            pool: pool,
+            tableName: "username_sessions",
+            createTableIfMissing: true,
+        }),
         secret: process.env.SECRET_SESSION,
         resave: false,
         saveUninitialized: false,
+        cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 },
     }),
 );
 app.use(passport.session());
