@@ -5,7 +5,7 @@ const createMessageRouter = Router();
 
 createMessageRouter.get("/", (req, res) => {
     if (req.isAuthenticated()) {
-        res.status(200).render("./createMessage");
+        res.status(200).render("./createMessage", { user: req.user });
     } else {
         res.status(401).render("./login", {
             errors: [
