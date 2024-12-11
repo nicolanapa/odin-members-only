@@ -41,7 +41,8 @@
     list-style: none;
 }
 
-.message {
+.message,
+.create-message {
     background-color: #fff5ff;
     border-radius: 5px;
     padding: 40px 20px;
@@ -157,6 +158,10 @@ form > input + button[type="submit"] {
         margin-bottom: 7.5%;
         padding: 10px;
     }
+
+    .create-message {
+        margin: 20px;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -173,5 +178,14 @@ form > input + button[type="submit"] {
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         grid-template-rows: 1.5fr;
         grid-auto-rows: 1fr;
+    }
+
+    .create-message {
+        margin: 10% 17.5%;
+    }
+
+    .create-message div {
+        justify-content: center;
+        margin: 20px 5%;
     }
 }
